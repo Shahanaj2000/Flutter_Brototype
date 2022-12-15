@@ -1,0 +1,34 @@
+final _errorMessage = "Username or Password doesn't mathch";
+
+      //Snack Bars
+      ScaffoldMessenger.of(ctx).showSnackBar(
+        SnackBar(
+          content: Text(_errorMessage),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(20.0),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 10),
+        ),
+      );
+
+      // ! Alert Dialogue
+
+      showDialog(context: ctx, builder: (ctx1) {
+        return AlertDialog(
+          title: const Text('Eroor'),
+          content: Text(_errorMessage),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx1).pop();
+              },
+              child: const Text("Close"),
+            ),
+          ], 
+        );
+      });
+
+     // ? Show Data 
+     setState(() {
+       _isDataMatched = false;
+     });
