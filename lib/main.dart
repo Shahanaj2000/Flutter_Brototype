@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_titorials/Screens/Splash_screen.dart';
 
+const SAVE_KEY_NAME = 'userLoggedIn';
+
 void main() {
   runApp(const MyApp());
 }
