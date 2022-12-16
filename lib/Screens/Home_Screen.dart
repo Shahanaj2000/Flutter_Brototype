@@ -22,7 +22,7 @@ class ScreenHome extends StatelessWidget {
       ),
     );
   }
-  //? Sigout Fn
+  //? Sigout Functions
   signout(BuildContext ctx) async{
 
     final _sharePrefs = await SharedPreferences.getInstance();
