@@ -1,9 +1,17 @@
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:my_titorials/HiveDB/Screens/Home/screen_home.dart';
+import 'package:my_titorials/HiveDB/db/models/data_modelss.dart';
 
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized(); // Checking the prblms then only it go further steps
+  await Hive.initFlutter();
+  //? Adapter registration
+  if (!Hive.isAdapterRegistered(StudentModelAdapter().typeId)) {
+    Hive.registerAdapter(StudentModelAdapter());
+  }
   runApp(const MyApp());
 }
 
