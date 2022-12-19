@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_titorials/HiveDB/db/functions/db_functions.dart';
+import 'package:my_titorials/HiveDB/db/models/data_modelss.dart';
 
 class AddStudentWidget extends StatelessWidget {
    AddStudentWidget({super.key});
@@ -32,7 +34,9 @@ class AddStudentWidget extends StatelessWidget {
           const SizedBox(height: 10,),
 
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              onAddStudentButtonClicked();
+            },
             icon: const Icon(Icons.add),
             label: const Text("Add Student"),
           ),
@@ -49,7 +53,9 @@ class AddStudentWidget extends StatelessWidget {
   if (_name.isEmpty || _age.isEmpty) {
     return;
   } else {
-        print('$_name $_age');
+        //print('$_name $_age');
+        final _student = StudentModel(name: _name, age: _age);
+        addStudent(_student);
     }
   }
 }

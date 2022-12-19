@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:my_titorials/HiveDB/db/functions/db_functions.dart';
+import 'package:my_titorials/HiveDB/db/models/data_modelss.dart';
 
 class ListStudentWidhet extends StatelessWidget {
   const ListStudentWidhet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (ctx, index) {
-        return ListTile(
-          title: Text('Name $index'),
-          subtitle: Text('Age $index'),
-        );
+    return ValueListenableBuilder(
+      valueListenable: studentListNotifier, //! Data Updating 
+      builder: (BuildContext ctx, List<StudentModel> studentList, Widget? child) {
+        return ListView.separated( //!Automatically UI will be changed
+        itemBuilder: (ctx, index) {
+          final data = studentList[index];
+          return ListTile(
+            title: Text(data.name),
+            subtitle: Text(data.age),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const Divider();
+        },
+        itemCount: studentList.length,
+      );
       },
-      separatorBuilder: (context, index) {
-        return const Divider();
-      },
-      itemCount: 50,
+      
     );
   }
 }
